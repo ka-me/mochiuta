@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    
+    public function songs()
+    {
+        return $this->belongsToMany('App\Song', 'user_songs')
+            ->withPivot('created_at AS joined_at')
+            ->withTimestamps();
+    }
+    
 }

@@ -13,11 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->middleware('auth')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function() {
     
-    Route::get('mochiuta/add', 'Mypage\MochiutaController@add');
-    Route::post('mochiuta/add', 'Mypage\MochiutaController@mochiutaAdd');
+    Route::get('mochiuta/add', 'Mypage\MochiutaController@index');
+    Route::post('mochiuta/add', 'Mypage\MochiutaController@add');
     
 });

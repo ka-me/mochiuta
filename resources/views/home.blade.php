@@ -1,23 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.common')
+
+@section('title', Auth::user()->name . 'さん')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+    <div class="container text-center my-5">
+        <h3 class="text-primary">{{ Auth::user()->name }}さんの持ち歌</h3>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-10 col-md-7 mx-auto">
+                @foreach($mysongs as $mysong)
+                    <div class="card mb-1">
+                        <div class="card-body">
+                            <h5>{{ $mysong->name }} / {{ $mysong->artist->name }}</h5>
+                            <p>登録日：{{ $mysong->joined_at }}</p>
                         </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-</div>
 @endsection

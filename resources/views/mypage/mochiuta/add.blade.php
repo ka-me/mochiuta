@@ -18,11 +18,11 @@
                             @foreach($artists as $artist)
                             
                                 @if($artist == $select_artist)
-                                    <a href="{{ action('Mypage\MochiutaController@add', ['id' => $artist->id]) }}" class="list-group-item list-group-item-action">
+                                    <a href="{{ action('Mypage\MochiutaController@index', ['id' => $artist->id]) }}" class="list-group-item list-group-item-action">
                                         {{ $artist->name }}<span class="badge badge-primary">選択中</span>
                                     </a>
                                 @else
-                                    <a href="{{ action('Mypage\MochiutaController@add', ['id' => $artist->id]) }}" class="list-group-item list-group-item-action">
+                                    <a href="{{ action('Mypage\MochiutaController@index', ['id' => $artist->id]) }}" class="list-group-item list-group-item-action">
                                         {{ $artist->name }}
                                     </a>
                                 @endif
@@ -34,10 +34,10 @@
                     <div class="col-md-5 offset-md-2 mt-3 mt-md-0">
                         <p>2.曲を選ぶ</p>
                         
-                        @empty($select_artist)
+                        @if(is_null($select_artist))
                             <p>アーティストを選択してください</p>
                         @else
-                            <form action="{{ action('Mypage\MochiutaController@mochiutaAdd') }}" method="post">
+                            <form action="{{ action('Mypage\MochiutaController@add') }}" method="post">
                                 @csrf
                                 
                                 <div class="form-group">
@@ -52,7 +52,7 @@
                             
                                 <button type="submit" class="btn btn-primary btn-block">持ち歌登録</button>
                             </form>
-                        @endempty
+                        @endif
                     </div>
                 </div>
             </div>
