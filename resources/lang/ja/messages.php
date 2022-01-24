@@ -9,4 +9,5 @@ return [
     'Name' => 'ユーザー名',
     'Confirm Password' => 'パスワード（確認用）',
     'Logout' => 'ログアウト',
+    'Toggle navigation' => 'ナビゲーション切替',
 ];
