@@ -8,4 +8,5 @@ return [
     'Register' => '新規登録',
     'Name' => 'ユーザー名',
     'Confirm Password' => 'パスワード（確認用）',
+    'Logout' => 'ログアウト',
 ];

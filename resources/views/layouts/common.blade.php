@@ -21,12 +21,49 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div id="app">
-            <main class="py-4">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand mr-auto" href="{{ route('home') }}">
+                    {{ config('app.name') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 
-                @yield('content')
-                
-            </main>
-        </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-md-0">
+                        <li class="nav-item mr-2">
+                            <a href="{{ route('home') }}" class="nav-link">持ち歌一覧</a>
+                        </li>
+                        
+                        <li class="nav-item mr-2">
+                            <a href="{{ action('Mypage\MochiutaController@index') }}" class="nav-link">持ち歌登録</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    {{ __('messages.Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="py-4 my-5">
+            @yield('content')
+        </main>
     </body>
 </html>

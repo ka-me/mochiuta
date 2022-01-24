@@ -21,14 +21,12 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
-        <div id="app">
-            <main class="py-4">
-                <div class="container text-center my-5">
-                    <h5>持ち歌登録アプリ</h5>
-                    <h1 class="text-primary">mochiuta</h1>
-                </div>
-                @yield('content')
-            </main>
-        </div>
+        <main class="py-4">
+            <div class="container text-center my-5">
+                <h5>持ち歌登録アプリ</h5>
+                <h1 class="text-primary">mochiuta</h1>
+            </div>
+            @yield('content')
+        </main>
     </body>
 </html>
