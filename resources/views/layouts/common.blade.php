@@ -38,7 +38,7 @@
                         </li>
                         
                         <li class="nav-item mr-2">
-                            <a href="{{ action('Mypage\MochiutaController@index') }}" class="nav-link">持ち歌登録</a>
+                            <a href="{{ action('Mypage\SearchController@index') }}" class="nav-link">曲を探す</a>
                         </li>
                         
                         <li class="nav-item dropdown">
@@ -63,6 +63,9 @@
         </nav>
         
         <main class="py-4 my-5">
+            <div class="container text-center my-5">
+                <h3 class="text-primary">@yield('page_heading')</h3>
+            </div>
             @yield('content')
         </main>
     </body>

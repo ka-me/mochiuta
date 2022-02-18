@@ -16,8 +16,9 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function() {
+    Route::get('search', 'Mypage\SearchController@index');
+    Route::get('search/artist/{id}', 'Mypage\SearchController@selectArtist');
     
     Route::get('mochiuta/add', 'Mypage\MochiutaController@index');
     Route::post('mochiuta/add', 'Mypage\MochiutaController@add');
-    
 });
