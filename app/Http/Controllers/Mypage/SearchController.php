@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Mypage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
 use App\Artist;
 use App\Song;
+
 
 class SearchController extends Controller
 {
@@ -15,19 +17,21 @@ class SearchController extends Controller
         $keyword = $request->keyword;
         
         if($keyword == '') {
-        	return view('mypage.search', ['results' => [] ]);
+            return view('mypage.search', ['results' => [] ]);
         }
         
         $category = $request->category;
         
         switch($category) {
-        	case 'artist':
-        		$query = Artist::query();
+            case 'artist':
+        	    $query = Artist::query();
+        		$mysong_ids = null;
         		break;
-        	case 'song':
-        		$query = Song::query();
+            case 'song':
+        	    $query = Song::query();
+        	    $mysong_ids = Auth::user()->getHasSongIds();
         		break;
-        	default:
+            default:
         	    return view('mypage.search', ['results' => [] ]);
         }
             
@@ -39,21 +43,19 @@ class SearchController extends Controller
         }
         $results = $query->orderBy('name')->get();
         
-        return view('mypage.search', ['results' => $results, 'category' => $category]);
+        session(['song_search_url' => url()->full()]);
+
+        return view('mypage.search', ['results' => $results, 'category' => $category, 'mysong_ids' => $mysong_ids]);
     }
     
     
-    public function selectArtist($id)
+    public function selectArtist(Artist $artist)
     {
-        $select_artist = Artist::find($id);
+        $results = $artist->songs()->orderBy('name')->get();
+        $mysong_ids = Auth::user()->getHasSongIds($artist->id);
         
-        if(is_null($select_artist)) {
-            return view('mypage.search', ['results' => [] ]);
-        }    
-            
-        $results = $select_artist->songs()->orderBy('name')->get();
-        $category = 'song';
-        
-        return view('mypage.search', ['results' => $results, 'category' => $category]);
+        session(['song_search_url' => url()->full()]);
+
+        return view('mypage.search', ['results' => $results, 'category' => 'song', 'mysong_ids' => $mysong_ids]);
     }
 }

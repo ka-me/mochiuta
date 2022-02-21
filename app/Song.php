@@ -23,4 +23,14 @@ class Song extends Model
         return $this->belongsToMany('App\User', 'user_songs');
     }
     
+    /**
+     * 画面表示用の名前を取得　曲名 / アーティスト名
+     * 
+     * @return string
+     */
+    public function getDisplayNameAttribute()
+    {
+        return "{$this->name} / {$this->artist->name}";
+    }
+    
 }

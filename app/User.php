@@ -45,4 +45,23 @@ class User extends Authenticatable
             ->withTimestamps();
     }
     
+    /**
+    * @return array
+    */
+    public function getHasSongIds($artist_id = null) 
+    {
+        $user_songs = $this->songs;
+        if(isset($artist_id)) {
+            $user_songs->where('artist_id', $artist_id);
+        }
+        return $user_songs->pluck('id')->toArray();
+    }
+    
+    /**
+    * @return bool
+    */
+    public function hasSelectSong($song_id)
+    {    
+        return $this->songs->contains('id', $song_id);
+    }
 }
