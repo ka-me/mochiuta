@@ -41,7 +41,7 @@ class User extends Authenticatable
     public function songs()
     {
         return $this->belongsToMany('App\Song', 'user_songs')
-            ->withPivot('created_at AS joined_at')
+            ->withPivot('created_at AS added_at')
             ->withTimestamps();
     }
     
@@ -50,11 +50,11 @@ class User extends Authenticatable
     */
     public function getHasSongIds($artist_id = null) 
     {
-        $user_songs = $this->songs;
+        $query = $this->songs();
         if(isset($artist_id)) {
-            $user_songs->where('artist_id', $artist_id);
+            $query->where('artist_id', $artist_id);
         }
-        return $user_songs->pluck('id')->toArray();
+        return $query->pluck('songs.id')->toArray();
     }
     
     /**
