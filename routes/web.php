@@ -22,3 +22,7 @@ Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function() {
     Route::get('mochiuta/add/{song}', 'Mypage\MochiutaController@selectSong');
     Route::post('mochiuta/add/song', 'Mypage\MochiutaController@selectSongAdd');
 });
+
+Route::group(['prefix' => 'users', 'middleware' => 'auth'], function() {
+    Route::get('{user}', 'Users\HomeController@index');
+});

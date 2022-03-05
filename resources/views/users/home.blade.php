@@ -1,4 +1,4 @@
-{{-- auth user home view --}}
+{{-- other users home view --}}
 @extends('layouts.common')
 
 @section('title', $user->name . 'さん')

@@ -48,7 +48,7 @@ class User extends Authenticatable
     /**
     * @return array
     */
-    public function getHasSongIds($artist_id = null) 
+    public function getMySongIds($artist_id = null)
     {
         $query = $this->songs();
         if(isset($artist_id)) {
@@ -57,6 +57,14 @@ class User extends Authenticatable
         return $query->pluck('songs.id')->toArray();
     }
     
+     /**
+    * @return array
+    */
+    public function getMyArtistIds()
+    {
+        return $this->songs()->distinct()->pluck('artist_id')->toArray();
+    }
+
     /**
     * @return bool
     */

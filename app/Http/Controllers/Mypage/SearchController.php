@@ -29,7 +29,7 @@ class SearchController extends Controller
         		break;
             case 'song':
         	    $query = Song::query();
-        	    $mysong_ids = Auth::user()->getHasSongIds();
+        	    $mysong_ids = Auth::user()->getMySongIds();
         		break;
             default:
         	    return view('mypage.search', ['results' => [] ]);
@@ -52,7 +52,7 @@ class SearchController extends Controller
     public function selectArtist(Artist $artist)
     {
         $results = $artist->songs()->orderBy('name')->get();
-        $mysong_ids = Auth::user()->getHasSongIds($artist->id);
+        $mysong_ids = Auth::user()->getMySongIds($artist->id);
         
         session(['song_search_url' => url()->full()]);
 
