@@ -24,5 +24,6 @@ Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth'], function() {
-    Route::get('{user}', 'Users\HomeController@index');
+    Route::get('{user}', 'Users\HomeController@index')->where('user', '[0-9]+');
+    Route::get('search', 'Users\SearchController@index');
 });

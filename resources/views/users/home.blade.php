@@ -9,6 +9,8 @@
     <div class="container">
         <div class="row">
             <div class="col-11 col-md-9 mx-auto">
+                @include('includes.back_link', ['session' => 'user_list_url', 'page' => 'ユーザー一覧'])
+
                 @include('includes.home_tabs')
                 
                 @if(count($mysongs) == 0)

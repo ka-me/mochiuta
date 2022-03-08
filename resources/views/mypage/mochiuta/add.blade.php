@@ -8,9 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11 col-md-7 mx-auto">
-                <div class="mb-3">
-                    <a href="{{ session('song_search_url') }}">← 検索ページに戻る</a>
-                </div>
+                @include('includes.back_link', ['session' => 'song_search_url', 'page' => '検索ページ'])
                 
                 <label>曲名 / アーティスト名</label>
                 <div class="card mb-4">

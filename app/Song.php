@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Song extends Model
 {
+    protected $with = ['artist'];
+
     protected $fillable = ['name'];
     
     public static $rules = [
