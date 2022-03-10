@@ -66,11 +66,34 @@
             </div>
         </nav>
         
-        <main class="py-4 my-5">
-            <div class="container text-center my-5">
-                <h3 class="text-primary">@yield('page_heading')</h3>
+        <main class="py-3 my-5">
+            <div class="text-center">
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                @if(session('error'))
+                    <div class="alert alert-secondary" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                
+                <div class="container my-5">
+                    <h3 class="text-primary">@yield('page_heading')</h3>
+                </div>
             </div>
-            @yield('content')
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-11 col-md-9 mx-auto">
+                        
+                        @yield('content')
+                        
+                    </div>
+                </div>
+            </div>
         </main>
     </body>
 </html>
