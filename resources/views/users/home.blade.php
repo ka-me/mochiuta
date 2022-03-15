@@ -6,6 +6,22 @@
 @section('page_heading', $user->name . 'さんの持ち歌')
 
 @section('content')
+    <div class="text-center">
+        @if(Auth::user()->isBeingFollowed($user->id))
+            @include('includes.user_list.follower')
+        @endif
+    </div>
+    
+    <div class="row">
+        <div class="col-9 col-md-4 mx-auto mb-3">
+            @if(Auth::user()->isFollowing($user->id))
+                @include('includes.user_list.unfollow_button')
+            @else
+                @include('includes.user_list.follow_button')
+            @endif
+        </div>
+    </div>
+    
     @include('includes.back_link', ['session' => 'user_list_url', 'page' => 'ユーザー一覧'])
 
     @include('includes.home_tabs')

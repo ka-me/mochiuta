@@ -1,0 +1,1 @@
+<p class="text-secondary mb-2">フォロワーです</p>

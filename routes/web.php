@@ -16,6 +16,11 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'mypage', 'middleware' => 'auth'], function() {
+    Route::get('following', 'Mypage\FollowController@following');
+    Route::get('followers', 'Mypage\FollowController@followers');
+    Route::post('follow/{user_id}', 'Mypage\FollowController@follow');
+    Route::post('unfollow/{user_id}', 'Mypage\FollowController@unfollow');
+    
     Route::get('search', 'Mypage\SearchController@index');
     Route::get('search/artist/{artist}', 'Mypage\SearchController@selectArtist');
     

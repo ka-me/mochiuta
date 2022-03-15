@@ -24,7 +24,7 @@ class SearchController extends Controller
                             ->where('id', '<>', Auth::id())
                             ->with('songs')
                             ->inRandomOrder()
-                            ->limit(3)
+                            ->limit(4)
                             ->get();
         } else {
             $users = Common::searchByName(User::query(), $keyword)
@@ -32,8 +32,11 @@ class SearchController extends Controller
                             ->get();
         }
         
+        $follower_ids = Auth::user()->getFollowerIds();
+        $followee_ids = Auth::user()->getFolloweeIds();
+        
         session(['user_list_url' => url()->full()]);
         
-        return view('users.search', compact('users', 'keyword'));
+        return view('users.search', compact('users', 'keyword', 'follower_ids', 'followee_ids'));
     }
 }

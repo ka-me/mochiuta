@@ -1,0 +1,1 @@
+<p class="text-secondary mb-4">{{ $text }}</p>
