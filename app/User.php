@@ -93,6 +93,22 @@ class User extends Authenticatable
     }
     
     /**
+    * @return int
+    */
+    public function getFolloweeCount()
+    {
+        return $this->following()->count();
+    }
+    
+    /**
+    * @return int
+    */
+    public function getFollowerCount()
+    {
+        return $this->followers()->count();
+    }
+    
+    /**
     * @return bool
     */
     public function hasSelectSong($song_id)

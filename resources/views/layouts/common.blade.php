@@ -51,6 +51,15 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ action('Mypage\FollowController@following') }}">
+                                    フォロー <span class="badge badge-primary">{{ $auth_user_followee_count }}</span>
+                                </a>
+                                
+                                <a class="dropdown-item" href="{{ action('Mypage\FollowController@followers') }}">
+                                    フォロワー <span class="badge badge-primary">{{ $auth_user_follower_count }}</span>
+                                </a>
+                                
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('messages.Logout') }}
