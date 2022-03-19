@@ -38,6 +38,12 @@ class User extends Authenticatable
     ];
     
     
+    public function isAdmin()
+    {
+        return $this->role == 1;
+    }
+    
+    
     public function following()
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')
