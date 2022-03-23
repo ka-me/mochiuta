@@ -26,7 +26,16 @@
                 <h5>持ち歌登録アプリ</h5>
                 <h1 class="text-primary">mochiuta</h1>
             </div>
-            @yield('content')
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col-10 col-md-5 mx-auto">
+                        
+                        @yield('content')
+                        
+                    </div>
+                </div>
+            </div>
         </main>
     </body>
 </html>

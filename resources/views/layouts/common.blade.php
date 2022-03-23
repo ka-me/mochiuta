@@ -77,6 +77,12 @@
         
         <main class="py-3 my-5">
             <div class="text-center">
+                @if(session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                
                 @if(session('success'))
                     <div class="alert alert-success" role="alert">
                         {{ session('success') }}
