@@ -40,6 +40,6 @@ class MochiutaController extends Controller
         
         Auth::user()->songs()->attach($song_id);
         
-        return redirect(session('song_search_url'))->with('success', $song->display_name . ' を持ち歌に登録しました');
+        return redirect(session('song_search_url'))->with('status', $song->display_name . ' を持ち歌に登録しました');
     }
 }

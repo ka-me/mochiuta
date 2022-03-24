@@ -55,7 +55,7 @@ class FollowController extends Controller
         
         Auth::user()->following()->attach($user_id);
         
-        return back()->with('success', $user->name . ' さんをフォローしました');
+        return back()->with('status', $user->name . ' さんをフォローしました');
     }
     
     
@@ -67,6 +67,6 @@ class FollowController extends Controller
         
         Auth::user()->following()->detach($user_id);
         
-        return back()->with('success', 'フォローを解除しました');
+        return back()->with('status', 'フォローを解除しました');
     }
 }
