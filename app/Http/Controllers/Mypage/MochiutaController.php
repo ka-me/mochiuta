@@ -11,7 +11,7 @@ use App\Song;
 
 class MochiutaController extends Controller
 {
-    public function selectSong(Song $song) 
+    public function select(Song $song)
     {
         if(! session()->has('song_search_url')) {
             session(['song_search_url' => url('/mypage/search')]);
@@ -25,7 +25,7 @@ class MochiutaController extends Controller
     }
     
     
-    public function selectSongAdd(Request $request)
+    public function addSelect(Request $request)
     {
         $song_id = $request->song_id;
         $song = Song::find($song_id);

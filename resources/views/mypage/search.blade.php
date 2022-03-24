@@ -5,7 +5,7 @@
 @section('page_heading', '曲を探す')
 
 @section('content')
-    <form action="{{ action('Mypage\SearchController@index') }}" method="get">
+    <form action="{{ route('search') }}" method="get">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <input type="text" class="form-control" placeholder="入力してください" name="keyword" autofocus>
@@ -32,7 +32,7 @@
                 <div class="card mb-1">
                     <div class="card-body">
                         <h5 class="mb-0">
-                            <a href="{{ action('Mypage\SearchController@selectArtist', ['artist' => $artist->id]) }}">{{ $artist->name }}</a>
+                            <a href="{{ route('search.selectArtist', ['artist' => $artist->id]) }}">{{ $artist->name }}</a>
                         </h5>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                         @if(in_array($song->id, $mysong_ids))
                             <h5>{{ $song->display_name }} <span class="badge badge-primary">登録済</span></h5>
                         @else
-                            <h5><a href="{{ action('Mypage\MochiutaController@selectSong', ['song' => $song->id]) }}">{{ $song->display_name }}</a></h5>
+                            <h5><a href="{{ route('mochiuta.select', ['song' => $song->id]) }}">{{ $song->display_name }}</a></h5>
                         @endif
                         
                         @isset($song->preview_url)

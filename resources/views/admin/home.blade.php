@@ -24,7 +24,7 @@
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand mr-auto" href="{{ action('Admin\HomeController@index') }}">
+                <a class="navbar-brand mr-auto" href="{{ route('admin.home') }}">
                     {{ config('app.name') }} 管理
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('messages.Toggle navigation') }}">

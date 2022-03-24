@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="mb-3">
-        <form action="{{ action('Users\SearchController@index') }}" method="get">
+        <form action="{{ route('users.search') }}" method="get">
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" placeholder="ユーザー名を入力してください" name="keyword" autocomplete="off" autofocus>

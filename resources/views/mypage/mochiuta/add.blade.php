@@ -16,7 +16,7 @@
                 </div>
             </div>
             
-            <form action="{{ action('Mypage\MochiutaController@selectSongAdd') }}" method="post">
+            <form action="{{ route('mochiuta.addSelect') }}" method="post">
                 @csrf
                 <input type="hidden" name="song_id" value="{{ $song->id }}">
                 

@@ -38,11 +38,11 @@
                         </li>
                         
                         <li class="nav-item mr-2">
-                            <a href="{{ action('Mypage\SearchController@index') }}" class="nav-link">曲を探す</a>
+                            <a href="{{ route('search') }}" class="nav-link">曲を探す</a>
                         </li>
                         
                         <li class="nav-item mr-2">
-                            <a href="{{ action('Users\SearchController@index') }}" class="nav-link">ユーザーを探す</a>
+                            <a href="{{ route('users.search') }}" class="nav-link">ユーザーを探す</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -51,11 +51,11 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ action('Mypage\FollowController@following') }}">
+                                <a class="dropdown-item" href="{{ route('following') }}">
                                     フォロー <span class="badge badge-primary">{{ $auth_user_followee_count }}</span>
                                 </a>
                                 
-                                <a class="dropdown-item" href="{{ action('Mypage\FollowController@followers') }}">
+                                <a class="dropdown-item" href="{{ route('followers') }}">
                                     フォロワー <span class="badge badge-primary">{{ $auth_user_follower_count }}</span>
                                 </a>
                                 

@@ -25,7 +25,7 @@
                                 <p class="mb-2">{{ $user->songs->random()->display_name }} を歌っている</p>
                             @endif
                             
-                            <h5><a href="{{ action('Users\HomeController@index', ['user' => $user->id]) }}">{{ $user->name }}</a></h5>
+                            <h5><a href="{{ route('users.home', ['user' => $user->id]) }}">{{ $user->name }}</a></h5>
                             
                             @if($view !== 'followers')
                                 @if(in_array($user->id, $follower_ids))
