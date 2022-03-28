@@ -7,9 +7,7 @@
 @section('content')
     <div class-"row">
         <div class="col-md-9 mx-auto">
-            <div class="mb-3">
-                <a href="{{ route('edit') }}">← アカウント編集に戻る</a>
-            </div>
+            @include('includes.back_link', ['url' => route('edit'), 'page' => 'アカウント編集'])
     
             <div class="alert alert-danger text-center" role="alert">
                 登録データをすべて削除します<br>

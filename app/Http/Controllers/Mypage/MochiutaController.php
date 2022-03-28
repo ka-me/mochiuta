@@ -13,8 +13,8 @@ class MochiutaController extends Controller
 {
     public function select(Song $song)
     {
-        if(! session()->has('song_search_url')) {
-            session(['song_search_url' => url('/mypage/search')]);
+        if(! session('song_search_url')) {
+            session(['song_search_url' => route('search')]);
         }
         
         if(Auth::user()->hasSelectSong($song->id)) {

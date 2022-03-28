@@ -22,7 +22,9 @@
         </div>
     </div>
     
-    @include('includes.back_link', ['session' => 'user_list_url', 'page' => 'ユーザー一覧'])
+    @if(session('user_list_url'))
+        @include('includes.back_link', ['url' => session('user_list_url'), 'page' => 'ユーザー一覧'])
+    @endif
 
     @include('includes.home_tabs')
     

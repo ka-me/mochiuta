@@ -7,7 +7,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-10 mx-auto">
-            @include('includes.back_link', ['session' => 'song_search_url', 'page' => '検索ページ'])
+            @include('includes.back_link', ['url' => session('song_search_url'), 'page' => '曲検索'])
             
             <label>曲名 / アーティスト名</label>
             <div class="card mb-4">
