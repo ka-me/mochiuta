@@ -3,6 +3,12 @@
 @section('title', 'ログイン')
 
 @section('content')
+    @if(session('status'))
+        <div class="alert alert-primary text-center" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    
     <form method="POST" action="{{ route('login') }}">
         @csrf
 

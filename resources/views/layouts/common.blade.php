@@ -60,6 +60,11 @@
                                 </a>
                                 
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('edit') }}">
+                                    アカウント編集
+                                </a>
+                                
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('messages.Logout') }}
@@ -96,7 +101,7 @@
             
             <div class="container">
                 <div class="row">
-                    <div class="col-11 col-md-9 mx-auto">
+                    <div class="col-11 col-md-10 mx-auto">
                         
                         @yield('content')
                         

@@ -22,6 +22,14 @@ Route::middleware(['auth'])->group(function() {
         Route::post('follow/{user_id}', 'Mypage\FollowController@follow')->name('follow');
         Route::post('unfollow/{user_id}', 'Mypage\FollowController@unfollow')->name('unfollow');
         
+        Route::get('edit', 'Mypage\EditController@edit')->name('edit');
+        Route::post('edit/profile', 'Mypage\EditController@updateProfile')->name('profile.update');
+        Route::post('edit/email', 'Mypage\EditController@updateEmail')->name('email.update');
+        Route::post('edit/password', 'Mypage\EditController@updatePassword')->name('password.update');
+        
+        Route::get('deactivate', 'Mypage\DeactivateController@deactivate')->name('deactivate');
+        Route::post('deactivate', 'Mypage\DeactivateController@destroy')->name('destroy');
+        
         Route::get('search', 'Mypage\SearchController@index')->name('search');
         Route::get('search/artist/{artist}', 'Mypage\SearchController@selectArtist')->name('search.selectArtist')->where('artist', '[0-9]+');
         
