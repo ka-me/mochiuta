@@ -19,9 +19,18 @@
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->name }}" required autocomplete="name">	
         	
                     @include('includes.form_error', ['field' => 'name'])	
+                </div>
+                
+                <div class="form-group">	
+                    <label for="message">メッセージ</label>	
+                    <textarea id="message" class="form-control @error('message') is-invalid @enderror" name="message" rows="6" placeholder="160文字まで登録できます">{{ old('message') ?? $user->message }}</textarea>
+        	
+                    @include('includes.form_error', ['field' => 'message'])	
                 </div>	
-            @endcomponent	
-
+            @endcomponent
+        </div>
+        
+        <div class="col-md-6">
             @component('components.account_edit_form', ['route' => 'email.update', 'item' => 'メールアドレス'])	
                 <div class="form-group">
                     <label for="email">{{ __('messages.E-Mail Address') }}</label>
@@ -30,9 +39,7 @@
                     @include('includes.form_error', ['field' => 'email'])	
                 </div>
             @endcomponent
-        </div>
-        
-        <div class="col-md-6">
+            
             @component('components.account_edit_form', ['route' => 'password.update', 'item' => 'パスワード'])
                 <div class="form-group">
                     <label for="password">新しい{{ __('messages.Password') }}</label>

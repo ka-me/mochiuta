@@ -22,9 +22,10 @@ class EditController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'message' => ['nullable', 'string', 'max:160'],
         ]);
         
-        $profile = $request->only('name');
+        $profile = $request->only('name', 'message');
         
         Auth::user()->fill($profile)->save();
         
