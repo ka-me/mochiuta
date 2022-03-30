@@ -5,5 +5,8 @@
 @section('page_heading', Auth::user()->name . 'さんのフォロワー')
 
 @section('content')
-    @include('includes.user_list.display', ['view' => 'followers'])
+    @include('includes.user_list', [
+        'heading' => $users->count() . ' フォロワー',
+        'view' => 'followers'
+    ])
 @endsection

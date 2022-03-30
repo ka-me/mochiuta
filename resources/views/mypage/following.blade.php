@@ -5,5 +5,8 @@
 @section('page_heading', Auth::user()->name . 'さんのフォロー')
 
 @section('content')
-    @include('includes.user_list.display', ['view' => 'following'])
+    @include('includes.user_list', [
+        'heading' => $users->count() . ' フォロー',
+        'view' => 'following'
+    ])
 @endsection
