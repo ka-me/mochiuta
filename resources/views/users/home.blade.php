@@ -3,6 +3,12 @@
 
 @section('title', $user->name . 'さん')
 
+@section('back_link')
+    @if(session('user_list_url'))
+        @include('includes.back_link', ['url' => session('user_list_url'), 'page' => 'ユーザー一覧'])
+    @endif
+@endsection
+
 @section('page_heading', $user->name . 'さんの持ち歌')
 
 @section('content')
@@ -21,10 +27,6 @@
             @endif
         </div>
     </div>
-    
-    @if(session('user_list_url'))
-        @include('includes.back_link', ['url' => session('user_list_url'), 'page' => 'ユーザー一覧'])
-    @endif
 
     @include('includes.home_tabs')
     

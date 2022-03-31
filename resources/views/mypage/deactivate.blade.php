@@ -2,13 +2,15 @@
 
 @section('title', 'アカウント削除')
 
+@section('back_link')
+    @include('includes.back_link', ['url' => route('edit'), 'page' => 'アカウント編集'])
+@endsection
+
 @section('page_heading', 'アカウント削除')
 
 @section('content')
     <div class-"row">
         <div class="col-md-9 mx-auto">
-            @include('includes.back_link', ['url' => route('edit'), 'page' => 'アカウント編集'])
-    
             <div class="alert alert-danger text-center" role="alert">
                 登録データをすべて削除します<br>
                 ボタンを押すと最終確認メッセージが表示されます

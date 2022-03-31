@@ -81,27 +81,26 @@
         </nav>
         
         <main class="py-3 my-5">
-            <div class="text-center">
-                @if(session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-
-                @if(session('error'))
-                    <div class="alert alert-secondary" role="alert">
-                        {{ session('error') }}
-                    </div>
-                @endif
-                
-                <div class="container my-5">
-                    <h3 class="text-primary">@yield('page_heading')</h3>
+            @if(session('status'))
+                <div class="alert alert-success text-center" role="alert">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-secondary text-center" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             
             <div class="container">
                 <div class="row">
                     <div class="col-11 col-md-10 mx-auto">
+                        <div class="mt-5 mb-4">
+                            @yield('back_link')
+                            
+                            <h3 class="text-primary text-center">@yield('page_heading')</h3>
+                        </div>
                         
                         @yield('content')
                         
