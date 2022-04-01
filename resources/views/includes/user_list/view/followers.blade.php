@@ -1,7 +1,7 @@
 @include('includes.user_list.profile')
 
-@if(in_array($user->id, $followee_ids))
-    @include('includes.user_list.unfollow_button')
+@if(in_array($list_user->id, $followee_ids))
+    @include('includes.button.unfollow', ['user_id' => $list_user->id])
 @else
-    @include('includes.user_list.follow_button')
+    @include('includes.button.follow', ['user_id' => $list_user->id])
 @endif

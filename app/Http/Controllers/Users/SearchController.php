@@ -18,18 +18,18 @@ class SearchController extends Controller
         
         if($keyword == '') {
             $song_ids = Auth::user()->getMySongIds();
-            $users = User::whereHas('songs', function($q) use($song_ids) {
-                                $q->whereIn('songs.id', $song_ids);
-                            })
-                            ->where('id', '<>', Auth::id())
-                            ->with('songs')
-                            ->inRandomOrder()
-                            ->limit(4)
-                            ->get();
+            $list_users = User::whereHas('songs', function($q) use($song_ids) {
+                                    $q->whereIn('songs.id', $song_ids);
+                                })
+                                ->where('id', '<>', Auth::id())
+                                ->with('songs')
+                                ->inRandomOrder()
+                                ->limit(4)
+                                ->get();
         } else {
-            $users = Common::searchByName(User::query(), $keyword)
-                            ->with('songs')
-                            ->get();
+            $list_users = Common::searchByName(User::query(), $keyword)
+                                ->with('songs')
+                                ->get();
         }
         
         $follower_ids = Auth::user()->getFollowerIds();
@@ -37,6 +37,6 @@ class SearchController extends Controller
         
         session(['user_list_url' => url()->full()]);
         
-        return view('users.search', compact('users', 'keyword', 'follower_ids', 'followee_ids'));
+        return view('users.search', compact('list_users', 'keyword', 'follower_ids', 'followee_ids'));
     }
 }

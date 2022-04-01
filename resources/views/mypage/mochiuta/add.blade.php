@@ -2,8 +2,8 @@
 
 @section('title', '持ち歌登録')
 
-@section('back_link')
-    @include('includes.back_link', ['url' => session('song_search_url'), 'page' => '曲検索'])
+@section('back')
+    @include('includes.button.back', ['url' => session('song_search_url'), 'page' => '曲検索'])
 @endsection
 
 @section('page_heading', '持ち歌登録')

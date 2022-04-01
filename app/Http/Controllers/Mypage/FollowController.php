@@ -13,31 +13,31 @@ class FollowController extends Controller
 {
     public function following()
     {
-        $users = Auth::user()->following()
-                            ->with('songs')
-                            ->orderBy('follows.created_at', 'desc')
-                            ->get();
+        $list_users = Auth::user()->following()
+                                ->with('songs')
+                                ->orderBy('follows.created_at', 'desc')
+                                ->get();
         
         $follower_ids = Auth::user()->getFollowerIds();
         
         session(['user_list_url' => url()->full()]);
         
-        return view('mypage.following', compact('users', 'follower_ids'));
+        return view('mypage.following', compact('list_users', 'follower_ids'));
     }
     
     
     public function followers()
     {
-        $users = Auth::user()->followers()
-                            ->with('songs')
-                            ->orderBy('follows.created_at', 'desc')
-                            ->get();
+        $list_users = Auth::user()->followers()
+                                ->with('songs')
+                                ->orderBy('follows.created_at', 'desc')
+                                ->get();
         
         $followee_ids = Auth::user()->getFolloweeIds();
         
         session(['user_list_url' => url()->full()]);
         
-        return view('mypage.followers', compact('users', 'followee_ids'));
+        return view('mypage.followers', compact('list_users', 'followee_ids'));
     }
     
     

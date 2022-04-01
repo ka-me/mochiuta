@@ -2,8 +2,8 @@
 
 @section('title', 'アカウント削除')
 
-@section('back_link')
-    @include('includes.back_link', ['url' => route('edit'), 'page' => 'アカウント編集'])
+@section('back')
+    @include('includes.button.back', ['url' => route('edit'), 'page' => 'アカウント編集'])
 @endsection
 
 @section('page_heading', 'アカウント削除')

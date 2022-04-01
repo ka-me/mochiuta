@@ -3,9 +3,9 @@
 
 @section('title', $user->name . 'さん')
 
-@section('back_link')
+@section('back')
     @if(session('user_list_url'))
-        @include('includes.back_link', ['url' => session('user_list_url'), 'page' => 'ユーザー一覧'])
+        @include('includes.button.back', ['url' => session('user_list_url'), 'page' => 'ユーザー一覧'])
     @endif
 @endsection
 
@@ -14,16 +14,16 @@
 @section('content')
     <div class="text-center">
         @if(Auth::user()->isBeingFollowed($user->id))
-            @include('includes.user_list.follower')
+            @include('includes.follower_badge')
         @endif
     </div>
     
     <div class="row">
         <div class="col-9 col-md-4 mx-auto mb-3">
             @if(Auth::user()->isFollowing($user->id))
-                @include('includes.user_list.unfollow_button')
+                @include('includes.button.unfollow', ['user_id' => $user->id])
             @else
-                @include('includes.user_list.follow_button')
+                @include('includes.button.follow', ['user_id' => $user->id])
             @endif
         </div>
     </div>

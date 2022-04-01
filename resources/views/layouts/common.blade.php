@@ -97,7 +97,7 @@
                 <div class="row">
                     <div class="col-11 col-md-10 mx-auto">
                         <div class="mt-5 mb-4">
-                            @yield('back_link')
+                            @yield('back')
                             
                             <h3 class="text-primary text-center">@yield('page_heading')</h3>
                         </div>
