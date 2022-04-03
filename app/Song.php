@@ -15,20 +15,21 @@ class Song extends Model
         'name' => 'required',
     ];
     
+    
     public function artist()
     {
         return $this->belongsTo('App\Artist');
     }
+    
     
     public function users()
     {
         return $this->belongsToMany('App\User', 'user_songs');
     }
     
+    
     /**
      * 画面表示用の名前を取得　曲名 / アーティスト名
-     * 
-     * @return string
      */
     public function getDisplayNameAttribute()
     {

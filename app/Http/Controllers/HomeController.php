@@ -12,6 +12,11 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        return view('home', Common::getHomeData(Auth::user(), $request));
+        $home_data = Common::getHomeData(Auth::user(), $request);
+        
+        return view('home', [
+            'tabs'     => $home_data['tabs'],
+            'my_songs' => $home_data['my_songs']
+        ]);
     }
 }

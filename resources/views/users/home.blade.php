@@ -1,4 +1,3 @@
-{{-- other users home view --}}
 @extends('layouts.common')
 
 @section('title', $user->name . 'さん')
@@ -28,16 +27,18 @@
         </div>
     </div>
 
-    @include('includes.home_tabs')
+    @include('includes.home_tabs', ['route' => 'users.home', 'user_parameter' => ['user' => $user->id]])
     
-    @if(count($mysongs) == 0)
-        <h5 class="pt-2">該当データがありません</h5>
+    @if(count($my_songs) === 0)
+        <h5 class="pt-3 text-center">該当データがありません</h5>
     @else
-        @foreach($mysongs as $mysong)
-            <div class="card mb-1">
+        @foreach($my_songs as $my_song)
+            <div class="card mb-2">
                 <div class="card-body">
-                    <h5>{{ $mysong->display_name }}</h5>
-                    <p class="mb-0">登録日時：{{ $mysong->pivot->created_at->format('Y/n/j G:i:s') }}</p>
+                    <h5 class="card-title">{{ $my_song->display_name }}</h5>
+                </div>
+                <div class="card-footer bg-white text-right py-2">
+                    登録日時：{{ $my_song->pivot->created_at->format('Y/n/j G:i:s') }}
                 </div>
             </div>
         @endforeach

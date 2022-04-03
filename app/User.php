@@ -44,6 +44,9 @@ class User extends Authenticatable
     }
     
     
+    /**
+     * follows
+     */
     public function following()
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followee_id')
@@ -58,6 +61,45 @@ class User extends Authenticatable
     }
     
     
+    public function isFollowing($user_id)
+    {
+        return $this->following()->where('followee_id', $user_id)->exists();
+    }
+    
+    
+    public function isBeingFollowed($user_id)
+    {
+        return $this->followers()->where('follower_id', $user_id)->exists();
+    }
+    
+    
+    public function getFolloweeIds()
+    {
+        return $this->following()->pluck('followee_id')->toArray();
+    }
+    
+    
+    public function getFollowerIds()
+    {
+        return $this->followers()->pluck('follower_id')->toArray();
+    }
+    
+    
+    public function getFolloweeCount()
+    {
+        return $this->following()->count();
+    }
+    
+    
+    public function getFollowerCount()
+    {
+        return $this->followers()->count();
+    }
+    
+    
+    /**
+     * songs
+     */
     public function songs()
     {
         return $this->belongsToMany('App\Song', 'user_songs')
@@ -66,65 +108,12 @@ class User extends Authenticatable
     }
     
     
-    /**
-    * @return bool
-    */
-    public function isFollowing($user_id)
-    {
-        return $this->following()->where('followee_id', $user_id)->exists();
-    }
-    
-    /**
-    * @return bool
-    */
-    public function isBeingFollowed($user_id)
-    {
-        return $this->followers()->where('follower_id', $user_id)->exists();
-    }
-    
-    /**
-    * @return array
-    */
-    public function getFolloweeIds()
-    {
-        return $this->following()->pluck('followee_id')->toArray();
-    }
-    
-    /**
-    * @return array
-    */
-    public function getFollowerIds()
-    {
-        return $this->followers()->pluck('follower_id')->toArray();
-    }
-    
-    /**
-    * @return int
-    */
-    public function getFolloweeCount()
-    {
-        return $this->following()->count();
-    }
-    
-    /**
-    * @return int
-    */
-    public function getFollowerCount()
-    {
-        return $this->followers()->count();
-    }
-    
-    /**
-    * @return bool
-    */
     public function hasSelectSong($song_id)
     {
         return $this->songs->contains('id', $song_id);
     }
     
-    /**
-    * @return array
-    */
+    
     public function getMySongIds($artist_id = null)
     {
         $query = $this->songs();
@@ -134,11 +123,15 @@ class User extends Authenticatable
         return $query->pluck('songs.id')->toArray();
     }
     
-    /**
-    * @return array
-    */
+    
     public function getMyArtistIds()
     {
         return $this->songs()->distinct()->pluck('artist_id')->toArray();
+    }
+    
+    
+    public function getMySongCount()
+    {
+        return $this->songs()->count();
     }
 }

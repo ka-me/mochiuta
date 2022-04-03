@@ -18,6 +18,12 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
         
-        return view('users.home', Common::getHomeData($user, $request));
+        $home_data = Common::getHomeData($user, $request);
+        
+        return view('users.home', [
+            'user'     => $user,
+            'tabs'     => $home_data['tabs'],
+            'my_songs' => $home_data['my_songs']
+        ]);
     }
 }

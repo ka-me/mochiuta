@@ -7,53 +7,33 @@ use App\Artist;
 
 class Common
 {
-    /**
-    * @return array
-    */
     public static function getHomeData($user, $request)
     {
-        $mysong_count = $user->songs()->count();
+        $tabs = [];
+        $tabs['my_song_count'] = $user->getMySongCount();
         
-        $artist_ids = $user->getMyArtistIds();
-        $song_ids = $user->getMySongIds();
-
-        $myartists = Artist::whereIn('id', $artist_ids)
-                            ->withCount(['songs' => function($q) use($song_ids) {
-                                $q->whereIn('id', $song_ids);
-                            }])
-                            ->orderBy('name')
-                            ->get();
-
-        $display = $request->display;
-        $id = $request->id;
+        $my_artist_ids = $user->getMyArtistIds();
+        $my_song_ids = $user->getMySongIds();
+        $tabs['my_artists'] = Artist::getMyArtistsWithCount($my_artist_ids, $my_song_ids);
+        
         $query = $user->songs();
         
-        switch($display) {
-            case 'all':
-                break;
-            case 'artist':
-                $query->where('artist_id', $id);
-                break;
-            default:
-                $display = 'all';
+        if($request->display === 'artist') {
+            $query->where('artist_id', $request->id);
         }
         
-        $mysongs = $query->orderBy('added_at', 'desc')->get();
+        $my_songs = $query->orderBy('added_at', 'desc')->get();
         
-        return compact('user', 'mysong_count', 'myartists', 'display', 'id', 'mysongs');
+        return compact('tabs', 'my_songs');
     }
-
-    /**
-    * @return string
-    */
+    
+    
     public static function keywordTrim($keyword)
     {
         return trim(mb_convert_kana($keyword, 's'));
     }
-
-    /**
-    * @return Builder
-    */
+    
+    
     public static function searchByName($query, $keyword)
     {
         $words = str_replace(['%', '_'], ['\%', '\_'], $keyword);
