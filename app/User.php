@@ -97,6 +97,24 @@ class User extends Authenticatable
     }
     
     
+    public function getFollowListUsers()
+    {
+        return $this->following()
+                    ->with('songs')
+                    ->orderBy('follows.created_at', 'desc')
+                    ->get();
+    }
+    
+    
+    public function getFollowerListUsers()
+    {
+        return $this->followers()
+                    ->with('songs')
+                    ->orderBy('follows.created_at', 'desc')
+                    ->get();
+    }
+    
+    
     /**
      * songs
      */

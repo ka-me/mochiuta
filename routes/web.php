@@ -39,6 +39,10 @@ Route::middleware(['auth'])->group(function() {
     
     Route::prefix('users')->group(function() {
         Route::get('{user}', 'Users\HomeController@index')->name('users.home')->where('user', '[0-9]+');
+        
+        Route::get('{user}/following', 'Users\FollowController@following')->name('users.following')->where('user', '[0-9]+');
+        Route::get('{user}/followers', 'Users\FollowController@followers')->name('users.followers')->where('user', '[0-9]+');
+        
         Route::get('search', 'Users\SearchController@index')->name('users.search');
     });
     

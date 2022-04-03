@@ -13,10 +13,7 @@ class FollowController extends Controller
 {
     public function following()
     {
-        $list_users = Auth::user()->following()
-                                ->with('songs')
-                                ->orderBy('follows.created_at', 'desc')
-                                ->get();
+        $list_users = Auth::user()->getFollowListUsers();
         
         $follower_ids = Auth::user()->getFollowerIds();
         
@@ -28,10 +25,7 @@ class FollowController extends Controller
     
     public function followers()
     {
-        $list_users = Auth::user()->followers()
-                                ->with('songs')
-                                ->orderBy('follows.created_at', 'desc')
-                                ->get();
+        $list_users = Auth::user()->getFollowerListUsers();
         
         $followee_ids = Auth::user()->getFolloweeIds();
         
