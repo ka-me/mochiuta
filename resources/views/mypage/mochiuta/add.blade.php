@@ -18,14 +18,11 @@
                 </div>
             </div>
             
-            <form action="{{ route('mochiuta.addSelect') }}" method="post">
+            <form action="{{ route('mochiuta.addSelect', ['song_id' => $song->id]) }}" method="post">
                 @csrf
-                <input type="hidden" name="song_id" value="{{ $song->id }}">
                 
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <button type="submit" class="btn btn-primary btn-block">登録する</button>
-                    </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary px-5">登録する</button>
                 </div>
             </form>
         </div>

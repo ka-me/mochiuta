@@ -21,21 +21,20 @@ class MochiutaController extends Controller
             return redirect(session('song_search_url'))->with('error', $song->display_name . ' は持ち歌に登録済です');
         }
         
-        return view('mypage.mochiuta.add', ['song' => $song]);
+        return view('mypage.mochiuta.add', compact('song'));
     }
     
     
-    public function addSelect(Request $request)
+    public function addSelect($song_id)
     {
-        $song_id = $request->song_id;
         $song = Song::find($song_id);
         
         if(empty($song)) {
-            return redirect(session('song_search_url'))->with('error', '該当する曲がないため登録できませんでした');
+            return back()->with('error', '該当する曲がないため登録できませんでした');
         }
         
         if(Auth::user()->hasInMySong($song_id)) {
-            return redirect(session('song_search_url'))->with('error', $song->display_name . ' は持ち歌に登録済です');
+            return back()->with('error', $song->display_name . ' は持ち歌に登録済です');
         }
         
         Auth::user()->songs()->attach($song_id);

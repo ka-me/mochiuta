@@ -33,10 +33,10 @@ Route::middleware(['auth'])->group(function() {
         Route::get('search', 'Mypage\SearchController@index')->name('search');
         Route::get('search/artist/{artist}', 'Mypage\SearchController@selectArtist')->name('search.selectArtist')->where('artist', '[0-9]+');
         
-        Route::get('mochiuta/add/{song}', 'Mypage\MochiutaController@select')->name('mochiuta.select')->where('song', '[0-9]+');
-        Route::post('mochiuta/add/song', 'Mypage\MochiutaController@addSelect')->name('mochiuta.addSelect');
+        Route::get('mochiuta/add/{song}', 'Mypage\MochiutaController@select')->name('mochiuta.select');
+        Route::post('mochiuta/add/{song_id}', 'Mypage\MochiutaController@addSelect')->name('mochiuta.addSelect');
         
-        Route::get('mochiuta/edit/{song_id}', 'Mypage\MochiutaController@edit')->name('mochiuta.edit')->where('song_id', '[0-9]+');
+        Route::get('mochiuta/edit/{song_id}', 'Mypage\MochiutaController@edit')->name('mochiuta.edit');
         Route::post('mochiuta/delete/{song_id}', 'Mypage\MochiutaController@delete')->name('mochiuta.delete');
     });
     
