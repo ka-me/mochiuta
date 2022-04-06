@@ -126,9 +126,9 @@ class User extends Authenticatable
     }
     
     
-    public function hasSelectSong($song_id)
+    public function hasInMySong($song_id)
     {
-        return $this->songs->contains('id', $song_id);
+        return $this->songs()->where('songs.id', $song_id)->exists();
     }
     
     

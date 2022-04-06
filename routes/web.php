@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function() {
         
         Route::get('mochiuta/add/{song}', 'Mypage\MochiutaController@select')->name('mochiuta.select')->where('song', '[0-9]+');
         Route::post('mochiuta/add/song', 'Mypage\MochiutaController@addSelect')->name('mochiuta.addSelect');
+        
+        Route::get('mochiuta/edit/{song_id}', 'Mypage\MochiutaController@edit')->name('mochiuta.edit')->where('song_id', '[0-9]+');
+        Route::post('mochiuta/delete/{song_id}', 'Mypage\MochiutaController@delete')->name('mochiuta.delete');
     });
     
     Route::prefix('users')->group(function() {

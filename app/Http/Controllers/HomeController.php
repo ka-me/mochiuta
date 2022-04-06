@@ -14,6 +14,8 @@ class HomeController extends Controller
     {
         $home_data = Common::getHomeData(Auth::user(), $request);
         
+        session(['home_url' => url()->full()]);
+        
         return view('home', [
             'tabs'     => $home_data['tabs'],
             'my_songs' => $home_data['my_songs']

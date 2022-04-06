@@ -16,7 +16,8 @@
                     <h5 class="card-title">{{ $my_song->display_name }}</h5>
                 </div>
                 <div class="card-footer bg-white text-right py-2">
-                    登録日時：{{ $my_song->pivot->created_at->format('Y/n/j G:i:s') }}
+                    <a href="{{ route('mochiuta.edit', ['song_id' => $my_song->id]) }}" class="card-link mr-3">編集</a>
+                    登録：{{ $my_song->pivot->created_at->format('Y/m/d H:i') }}
                 </div>
             </div>
         @endforeach

@@ -57,7 +57,7 @@
                 </div>
                 
                 <div class="card-footer bg-white text-right py-2">
-                    登録日時：{{ $my_song->pivot->created_at->format('Y/n/j G:i:s') }}
+                    登録：{{ $my_song->pivot->created_at->format('Y/m/d H:i') }}
                 </div>
             </div>
         @endforeach
