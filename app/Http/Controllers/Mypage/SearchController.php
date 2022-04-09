@@ -26,11 +26,11 @@ class SearchController extends Controller
         switch($category) {
             case 'artist':
         	    $query = Artist::query();
-        		$mysong_ids = null;
+        		$my_song_ids = null;
         		break;
             case 'song':
         	    $query = Song::query();
-        	    $mysong_ids = Auth::user()->getMySongIds();
+        	    $my_song_ids = Auth::user()->getMySongIds();
         		break;
             default:
         	    return view('mypage.search', ['results' => [] ]);
@@ -40,7 +40,7 @@ class SearchController extends Controller
         
         session(['song_search_url' => url()->full()]);
 
-        return view('mypage.search', compact('results', 'category', 'mysong_ids'));
+        return view('mypage.search', compact('results', 'category', 'my_song_ids'));
     }
     
     
@@ -48,10 +48,10 @@ class SearchController extends Controller
     {
         $results = $artist->songs()->orderBy('name')->get();
         $category = 'song';
-        $mysong_ids = Auth::user()->getMySongIds($artist->id);
+        $my_song_ids = Auth::user()->getMySongIds($artist->id);
         
         session(['song_search_url' => url()->full()]);
 
-        return view('mypage.search', compact('results', 'category', 'mysong_ids'));
+        return view('mypage.search', compact('results', 'category', 'my_song_ids'));
     }
 }

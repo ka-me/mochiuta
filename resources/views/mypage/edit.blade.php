@@ -16,14 +16,14 @@
             @component('components.account_edit_form', ['route' => 'profile.update', 'item' => 'プロフィール'])	
                 <div class="form-group">	
                     <label for="name">{{ __('messages.Name') }}</label>	
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->name }}" required autocomplete="name">	
+                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $auth_user->name }}" required autocomplete="name">
         	
                     @include('includes.form_error', ['field' => 'name'])	
                 </div>
                 
                 <div class="form-group">	
                     <label for="message">メッセージ</label>	
-                    <textarea id="message" class="form-control @error('message') is-invalid @enderror" name="message" rows="6" placeholder="160文字まで登録できます">{{ old('message') ?? $user->message }}</textarea>
+                    <textarea id="message" class="form-control @error('message') is-invalid @enderror" name="message" rows="6" placeholder="160文字まで登録できます">{{ old('message') ?? $auth_user->message }}</textarea>
         	
                     @include('includes.form_error', ['field' => 'message'])	
                 </div>	
@@ -34,7 +34,7 @@
             @component('components.account_edit_form', ['route' => 'email.update', 'item' => 'メールアドレス'])	
                 <div class="form-group">
                     <label for="email">{{ __('messages.E-Mail Address') }}</label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $user->email }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $auth_user->email }}" required autocomplete="email">
         
                     @include('includes.form_error', ['field' => 'email'])	
                 </div>

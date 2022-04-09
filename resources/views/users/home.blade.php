@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="mb-2">
                         <a href="{{ route('users.following', ['user' => $user->id]) }}" class="card-link text-dark">
-                            {{ $about['followee_count'] }} フォロー
+                            {{ $about['follow_count'] }} フォロー
                         </a>
                         
                         <a href="{{ route('users.followers', ['user' => $user->id]) }}" class="card-link text-dark">

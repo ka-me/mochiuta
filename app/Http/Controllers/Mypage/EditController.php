@@ -14,7 +14,7 @@ class EditController extends Controller
 {
     public function edit()
     {
-        return view('mypage.edit', ['user' => Auth::user()]);
+        return view('mypage.edit', ['auth_user' => Auth::user()]);
     }
     
     

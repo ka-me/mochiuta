@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', $user->name . 'さん')
+@section('title', $user->name . 'さんのフォロワー')
 
 @section('back')
     @include('includes.button.back', [

@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', Auth::user()->name . 'さん')
+@section('title', '持ち歌編集')
 
 @section('back')
     @include('includes.button.back', ['url' => session('home_url'), 'page' => '持ち歌一覧'])

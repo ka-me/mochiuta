@@ -27,10 +27,10 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layouts/common', function ($view) {
-            $auth_user_followee_count = Auth::user()->getFolloweeCount();
-            $auth_user_follower_count = Auth::user()->getFollowerCount();
+            $follow_count = Auth::user()->getFollowCount();
+            $follower_count = Auth::user()->getFollowerCount();
             
-            $view->with(compact('auth_user_followee_count', 'auth_user_follower_count'));
+            $view->with(compact('follow_count', 'follower_count'));
         });
     }
 }

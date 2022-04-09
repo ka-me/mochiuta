@@ -32,12 +32,12 @@ class HomeController extends Controller
     
     public function getUserAbout($user)
     {
-        $followee_count = $user->getFolloweeCount();
+        $follow_count = $user->getFollowCount();
         $follower_count = $user->getFollowerCount();
         
-        $is_followed = Auth::user()->isBeingFollowed($user->id);
+        $is_followed = Auth::user()->isFollowed($user->id);
         $is_following = Auth::user()->isFollowing($user->id);
         
-        return compact('followee_count', 'follower_count', 'is_followed', 'is_following');
+        return compact('follow_count', 'follower_count', 'is_followed', 'is_following');
     }
 }

@@ -27,11 +27,11 @@ class FollowController extends Controller
     {
         $list_users = Auth::user()->getFollowerListUsers();
         
-        $followee_ids = Auth::user()->getFolloweeIds();
+        $following_ids = Auth::user()->getFollowingIds();
         
         session(['user_list_url' => url()->full()]);
         
-        return view('mypage.followers', compact('list_users', 'followee_ids'));
+        return view('mypage.followers', compact('list_users', 'following_ids'));
     }
     
     

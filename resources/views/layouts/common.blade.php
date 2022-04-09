@@ -52,11 +52,11 @@
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('following') }}">
-                                    フォロー <span class="badge badge-primary">{{ $auth_user_followee_count }}</span>
+                                    フォロー <span class="badge badge-primary">{{ $follow_count }}</span>
                                 </a>
                                 
                                 <a class="dropdown-item" href="{{ route('followers') }}">
-                                    フォロワー <span class="badge badge-primary">{{ $auth_user_follower_count }}</span>
+                                    フォロワー <span class="badge badge-primary">{{ $follower_count }}</span>
                                 </a>
                                 
                                 <div class="dropdown-divider"></div>

@@ -17,9 +17,9 @@ class SearchController extends Controller
         $keyword = Common::keywordTrim($request->keyword);
         
         if($keyword == '') {
-            $song_ids = Auth::user()->getMySongIds();
-            $list_users = User::whereHas('songs', function($q) use($song_ids) {
-                                    $q->whereIn('songs.id', $song_ids);
+            $my_song_ids = Auth::user()->getMySongIds();
+            $list_users = User::whereHas('songs', function($q) use($my_song_ids) {
+                                    $q->whereIn('songs.id', $my_song_ids);
                                 })
                                 ->where('id', '<>', Auth::id())
                                 ->with('songs')
@@ -33,10 +33,10 @@ class SearchController extends Controller
         }
         
         $follower_ids = Auth::user()->getFollowerIds();
-        $followee_ids = Auth::user()->getFolloweeIds();
+        $following_ids = Auth::user()->getFollowingIds();
         
         session(['user_list_url' => url()->full()]);
         
-        return view('users.search', compact('list_users', 'keyword', 'follower_ids', 'followee_ids'));
+        return view('users.search', compact('list_users', 'keyword', 'follower_ids', 'following_ids'));
     }
 }

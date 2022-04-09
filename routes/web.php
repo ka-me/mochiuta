@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function() {
         Route::post('deactivate', 'Mypage\DeactivateController@destroy')->name('destroy');
         
         Route::get('search', 'Mypage\SearchController@index')->name('search');
-        Route::get('search/artist/{artist}', 'Mypage\SearchController@selectArtist')->name('search.selectArtist')->where('artist', '[0-9]+');
+        Route::get('search/artist/{artist}', 'Mypage\SearchController@selectArtist')->name('search.selectArtist');
         
         Route::get('mochiuta/add/{song}', 'Mypage\MochiutaController@select')->name('mochiuta.select');
         Route::post('mochiuta/add/{song_id}', 'Mypage\MochiutaController@addSelect')->name('mochiuta.addSelect');
@@ -41,12 +41,12 @@ Route::middleware(['auth'])->group(function() {
     });
     
     Route::prefix('users')->group(function() {
-        Route::get('{user}', 'Users\HomeController@index')->name('users.home')->where('user', '[0-9]+');
-        
-        Route::get('{user}/following', 'Users\FollowController@following')->name('users.following')->where('user', '[0-9]+');
-        Route::get('{user}/followers', 'Users\FollowController@followers')->name('users.followers')->where('user', '[0-9]+');
-        
         Route::get('search', 'Users\SearchController@index')->name('users.search');
+        
+        Route::get('{user}', 'Users\HomeController@index')->name('users.home');
+        
+        Route::get('{user}/following', 'Users\FollowController@following')->name('users.following');
+        Route::get('{user}/followers', 'Users\FollowController@followers')->name('users.followers');
     });
     
     Route::middleware(['admin'])->group(function() {

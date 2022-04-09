@@ -13,22 +13,30 @@ class FollowController extends Controller
 {
     public function following(User $user)
     {
+        if($user->id === Auth::id()) {
+            return redirect()->route('following');
+        }
+        
         $list_users = $user->getFollowListUsers();
         
         $follower_ids = Auth::user()->getFollowerIds();
-        $followee_ids = Auth::user()->getFolloweeIds();
+        $following_ids = Auth::user()->getFollowingIds();
         
-        return view('users.following', compact('user', 'list_users', 'follower_ids', 'followee_ids'));
+        return view('users.following', compact('user', 'list_users', 'follower_ids', 'following_ids'));
     }
     
     
     public function followers(User $user)
     {
+        if($user->id === Auth::id()) {
+            return redirect()->route('followers');
+        }
+        
         $list_users = $user->getFollowerListUsers();
         
         $follower_ids = Auth::user()->getFollowerIds();
-        $followee_ids = Auth::user()->getFolloweeIds();
+        $following_ids = Auth::user()->getFollowingIds();
         
-        return view('users.followers', compact('user', 'list_users', 'follower_ids', 'followee_ids'));
+        return view('users.followers', compact('user', 'list_users', 'follower_ids', 'following_ids'));
     }
 }

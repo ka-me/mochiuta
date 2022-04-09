@@ -67,13 +67,13 @@ class User extends Authenticatable
     }
     
     
-    public function isBeingFollowed($user_id)
+    public function isFollowed($user_id)
     {
         return $this->followers()->where('follower_id', $user_id)->exists();
     }
     
     
-    public function getFolloweeIds()
+    public function getFollowingIds()
     {
         return $this->following()->pluck('followee_id')->toArray();
     }
@@ -85,7 +85,7 @@ class User extends Authenticatable
     }
     
     
-    public function getFolloweeCount()
+    public function getFollowCount()
     {
         return $this->following()->count();
     }
@@ -135,9 +135,11 @@ class User extends Authenticatable
     public function getMySongIds($artist_id = null)
     {
         $query = $this->songs();
+        
         if(isset($artist_id)) {
             $query->where('artist_id', $artist_id);
         }
+        
         return $query->pluck('songs.id')->toArray();
     }
     
