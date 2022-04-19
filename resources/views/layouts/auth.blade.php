@@ -22,14 +22,12 @@
     </head>
     <body>
         <main class="py-4">
-            <div class="container text-center my-5">
-                <h5>持ち歌登録アプリ</h5>
-                <h1 class="text-primary">mochiuta</h1>
-            </div>
-            
             <div class="container">
                 <div class="row">
-                    <div class="col-10 col-md-5 mx-auto">
+                    <div class="col-11 col-md-5 mx-auto">
+                        <div class="mt-5 mb-4 text-center">
+                            <h1 class="text-primary">{{ config('app.name') }}</h1>
+                        </div>
                         
                         @yield('content')
                         
