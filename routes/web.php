@@ -23,9 +23,9 @@ Route::middleware(['auth'])->group(function() {
         Route::post('unfollow/{user_id}', 'Mypage\FollowController@unfollow')->name('unfollow');
         
         Route::get('edit', 'Mypage\EditController@edit')->name('edit');
-        Route::post('edit/profile', 'Mypage\EditController@updateProfile')->name('profile.update');
-        Route::post('edit/email', 'Mypage\EditController@updateEmail')->name('email.update');
-        Route::post('edit/password', 'Mypage\EditController@updatePassword')->name('password.update');
+        Route::post('edit/profile', 'Mypage\EditController@updateProfile')->name('update.profile');
+        Route::post('edit/email', 'Mypage\EditController@updateEmail')->name('update.email');
+        Route::post('edit/password', 'Mypage\EditController@updatePassword')->name('update.password');
         
         Route::get('deactivate', 'Mypage\DeactivateController@deactivate')->name('deactivate');
         Route::post('deactivate', 'Mypage\DeactivateController@destroy')->name('destroy');

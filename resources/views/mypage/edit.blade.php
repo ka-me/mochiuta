@@ -13,7 +13,7 @@
     
     <div class="row">
         <div class="col-md-6">
-            @component('components.account_edit_form', ['route' => 'profile.update', 'item' => 'プロフィール'])	
+            @component('components.account_edit_form', ['route' => 'update.profile', 'item' => 'プロフィール'])	
                 <div class="form-group">	
                     <label for="name">{{ __('messages.Name') }}</label>	
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $auth_user->name }}" required autocomplete="name">
@@ -31,7 +31,7 @@
         </div>
         
         <div class="col-md-6">
-            @component('components.account_edit_form', ['route' => 'email.update', 'item' => 'メールアドレス'])	
+            @component('components.account_edit_form', ['route' => 'update.email', 'item' => 'メールアドレス'])	
                 <div class="form-group">
                     <label for="email">{{ __('messages.E-Mail Address') }}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $auth_user->email }}" required autocomplete="email">
@@ -40,7 +40,7 @@
                 </div>
             @endcomponent
             
-            @component('components.account_edit_form', ['route' => 'password.update', 'item' => 'パスワード'])
+            @component('components.account_edit_form', ['route' => 'update.password', 'item' => 'パスワード'])
                 <div class="form-group">
                     <label for="password">新しい{{ __('messages.Password') }}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
